@@ -3,10 +3,7 @@
 <%@include file="WEB-INF/layout/header.jsp"%>
 
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<h1>Welcome Page</h1>
 </body>
 
 <%@include file="WEB-INF/layout/footer.jsp"%>
