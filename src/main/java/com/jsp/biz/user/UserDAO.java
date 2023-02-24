@@ -9,12 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO implements DomainDAO {
+public class UserDAO implements DomainDAO<UserVO> {
     private static final String USER_LIST = "select * from users";
     private static final String USER_INSERT = "insert into users(email, password, name, role) values(?, ?, ?, ?)";
     private static final String USER_UPDATE = "update users set name = ?, role = ? where id = ?";
     private static final String USER_DELETE = "delete users where id = ?";
-
     private static final String USER_GET = "select * from users where id = ?";
 
 
@@ -59,7 +58,7 @@ public class UserDAO implements DomainDAO {
                     userVO.setPassword(rs.getString("password"));
                     userVO.setName(rs.getString("name"));
                     userVO.setRole(rs.getString("role"));
-                    userVO.setJoinDate(rs.getDate("joindate").toString());
+                    userVO.setJoinDate(rs.getDate("joindate"));
                     userVOList.add(userVO);
                 }
 
