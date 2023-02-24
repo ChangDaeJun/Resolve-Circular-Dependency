@@ -41,3 +41,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### H2 Database ###
+board.mv.db
+board.trace.db
