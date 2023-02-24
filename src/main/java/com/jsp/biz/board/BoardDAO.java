@@ -1,7 +1,6 @@
 package com.jsp.biz.board;
 
 import com.jsp.biz.DomainDAO;
-import com.jsp.biz.user.BoardVO;
 import com.jsp.database.DBController;
 import com.jsp.database.DBExtractor;
 
