@@ -1,5 +1,6 @@
 package com.jsp.biz.user;
 
+import com.jsp.biz.DomainVO;
 import com.jsp.database.DBExtractor;
 
 import java.sql.ResultSet;
@@ -7,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserVO{
+public class UserVO implements DomainVO {
     private Long id;
     private String email;
     private String password;
@@ -75,25 +76,27 @@ public class UserVO{
         this.joinDate = joinDate;
     }
 
-    public static DBExtractor<UserVO> getAllExtractor(){
-        return new DBExtractor<UserVO>() {
-            @Override
-            public List<UserVO> getList(ResultSet rs) throws SQLException {
-                List<UserVO> userVOList = new ArrayList<>();
+    @Override
+    public String[] getInsertValue(){
+        String[] value = {this.email, this.password, this.name, this.role};
+        return value;
+    }
 
-                while (rs.next()) {
-                    UserVO userVO = new UserVO();
-                    userVO.setId(rs.getLong("id"));
-                    userVO.setEmail(rs.getString("email"));
-                    userVO.setPassword(rs.getString("password"));
-                    userVO.setName(rs.getString("name"));
-                    userVO.setRole(rs.getString("role"));
-                    userVO.setJoinDate(rs.getDate("joindate").toString());
-                    userVOList.add(userVO);
-                }
+    @Override
+    public String[] getUpdateValue(){
+        String[] value = {this.name, this.role, ""+ this.id};
+        return value;
+    }
 
-                return userVOList;
-            }
-        };
+    @Override
+    public String[] getDeleteValue(){
+        String[] value = {""+ this.id};
+        return value;
+    }
+
+    @Override
+    public String[] getFindByIdValue(){
+        String[] value = {""+ this.id};
+        return value;
     }
 }
