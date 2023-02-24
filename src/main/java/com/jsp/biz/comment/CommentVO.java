@@ -1,4 +1,4 @@
-package com.jsp.biz.board;
+package com.jsp.biz.comment;
 
 import com.jsp.biz.DomainVO;
 import lombok.Data;
@@ -6,24 +6,22 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class BoardVO implements DomainVO {
+public class CommentVO implements DomainVO {
     private Long id;
+    private Long boardId;
     private Long userId;
-    private String title;
     private String text;
-    private String role;
-    private Long viewCnt;
     private Date createdDate;
 
     @Override
     public String[] getInsertValue() {
-        String[] value = {""+this.userId, ""+this.title, this.text, this.role, ""+this.viewCnt};
+        String[] value = {""+this.userId, ""+this.boardId, this.text};
         return value;
     }
 
     @Override
     public String[] getUpdateValue() {
-        String[] value = {this.title, this.text, ""+this.viewCnt, ""+this.id};
+        String[] value = {this.text};
         return value;
     }
 

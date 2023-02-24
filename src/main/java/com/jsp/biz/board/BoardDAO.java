@@ -17,7 +17,7 @@ public class BoardDAO implements DomainDAO<BoardVO> {
     private static final String BOARD_GET = "select * from boards where id = ?";
     @Override
     public List<BoardVO> getList() {
-        List<BoardVO> boards = DBController.select(BOARD_GET, getAllExtractor());
+        List<BoardVO> boards = DBController.select(BOARD_LIST, getAllExtractor());
         return boards;
     }
 
