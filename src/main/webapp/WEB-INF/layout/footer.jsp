@@ -3,6 +3,7 @@
 <br>
 <br>
 <br>
+<hr>
 <center>
     프로젝트 이름 : Board Project<br>
     프로젝트 기간 : 23.02.22 ~ 23.02.26 <br>

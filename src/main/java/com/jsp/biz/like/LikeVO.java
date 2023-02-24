@@ -14,21 +14,25 @@ public class LikeVO implements DomainVO {
 
     @Override
     public String[] getInsertValue() {
-        return new String[0];
+        String[] value = {""+this.userId, ""+this.boardId};
+        return value;
     }
 
     @Override
     public String[] getUpdateValue() {
-        return new String[0];
+        String[] value = {};
+        return value;
     }
 
     @Override
     public String[] getDeleteValue() {
-        return new String[0];
+        String[] value = {""+this.id};
+        return value;
     }
 
     @Override
     public String[] getFindByIdValue() {
-        return new String[0];
+        String[] value = {""+this.id};
+        return value;
     }
 }

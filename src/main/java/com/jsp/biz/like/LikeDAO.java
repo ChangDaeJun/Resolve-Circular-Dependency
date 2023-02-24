@@ -12,7 +12,7 @@ import java.util.List;
 public class LikeDAO implements DomainDAO<LikeVO> {
     private static final String LIKE_LIST = "select * from likes";
     private static final String LIKE_INSERT = "insert into likes(userId, boardId) values(?, ?)";
-    private static final String LIKE_UPDATE = "update likes set text = ? where id = ?";
+    private static final String LIKE_UPDATE = "";
     private static final String LIKE_DELETE = "delete likes where id = ?";
     private static final String LIKE_GET = "select * from likes where id = ?";
     @Override
@@ -28,7 +28,7 @@ public class LikeDAO implements DomainDAO<LikeVO> {
 
     @Override
     public void update(LikeVO vo) {
-        DBController.update(LIKE_UPDATE, vo.getInsertValue());
+        //DBController.update(LIKE_UPDATE, vo.getInsertValue());
     }
 
     @Override
