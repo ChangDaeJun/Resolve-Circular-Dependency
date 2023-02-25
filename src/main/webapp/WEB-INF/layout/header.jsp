@@ -10,7 +10,7 @@
 <% UserVO user = (UserVO) session.getAttribute("user");%>
 <% if(user == null) {%>
     <a href="insertUserView.do">회원 가입</a> &nbsp;&nbsp;&nbsp;
-    <a href="loginView.do">로그인</a> &nbsp;&nbsp;&nbsp;
+    <a href="loginUserView.do">로그인</a> &nbsp;&nbsp;&nbsp;
 <%} else {%>
     <a href="insertBoardView.do">글 등록</a> &nbsp;&nbsp;&nbsp;
     <a href="logout.do">로그아웃</a> &nbsp;&nbsp;&nbsp;

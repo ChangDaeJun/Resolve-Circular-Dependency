@@ -14,8 +14,8 @@ public class UserDAO implements DomainDAO<UserVO> {
     private static final String USER_INSERT = "insert into users(email, password, name, role) values(?, ?, ?, ?)";
     private static final String USER_UPDATE = "update users set name = ?, role = ? where id = ?";
     private static final String USER_DELETE = "delete users where id = ?";
-    private static final String USER_GET = "select * from users where id = ?";
-
+    private static final String USER_GET_ID = "select * from users where id = ?";
+    private static final String USER_GET_EMAIL = "select * from users where email = ?";
 
     @Override
     public List<UserVO> getList(){
@@ -40,8 +40,20 @@ public class UserDAO implements DomainDAO<UserVO> {
 
     @Override
     public UserVO findById(UserVO userVO){
-        List<UserVO> users = (List<UserVO>) DBController.select(USER_GET, getAllExtractor(), userVO.getFindByIdValue());
+        List<UserVO> users = (List<UserVO>) DBController.select(USER_GET_ID, getAllExtractor(), userVO.getFindByIdValue());
         return users.get(0);
+    }
+
+    public UserVO findByEmail (UserVO userVO) throws IndexOutOfBoundsException{
+        List<UserVO> users = (List<UserVO>) DBController.select(USER_GET_EMAIL, getAllExtractor(), userVO.getFindByEmailValue());
+        UserVO user = null;
+        try {
+            user = users.get(0);
+        }catch (IndexOutOfBoundsException e){
+            return user;
+        }
+
+        return user;
     }
 
     @Override

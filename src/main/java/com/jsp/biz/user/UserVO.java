@@ -37,4 +37,9 @@ public class UserVO implements DomainVO {
         String[] value = {""+ this.id};
         return value;
     }
+
+    public String[] getFindByEmailValue(){
+        String[] value = {""+ this.email};
+        return value;
+    }
 }
