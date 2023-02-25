@@ -10,7 +10,7 @@ public class DBUtil {
         try {
             DriverManager.registerDriver(new Driver());
 
-            String jdbcURL = "jdbc:h2:./board";
+            String jdbcURL = "jdbc:h2:tcp://localhost/~/Desktop/Board/board";
             conn = DriverManager.getConnection(jdbcURL, "dbconnect", "1234");
         } catch (SQLException e) {
             e.printStackTrace();
