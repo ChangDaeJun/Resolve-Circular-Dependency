@@ -1,5 +1,8 @@
 package com.jsp.web.controller;
 
+import com.jsp.web.controller.user.InsertUserController;
+import com.jsp.web.controller.user.InsertUserViewController;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,8 +11,8 @@ public class HandlerMapping {
 
     public HandlerMapping() {
         this.mappings = new HashMap<>();
-//        mappings.put("/insertUserView.do" , new InsertUserViewController());
-//        mappings.put("/insertUser.do", new InsertUserController());
+        mappings.put("/insertUserView.do" , new InsertUserViewController());
+        mappings.put("/insertUser.do", new InsertUserController());
 //        mappings.put("/login.do", new LoginController());
 //        mappings.put("/loginView.do", new LoginViewController());
 //        mappings.put("/getBoardList.do", new GetBoardListController());
