@@ -13,13 +13,15 @@
         <tr>
             <th bgcolor='orange' width='100'>번호</th>
             <th bgcolor='orange' width='200'>제목</th>
+            <th bgcolor='orange' width='200'>제목</th>
             <th bgcolor='orange' width='150'>등록일</th>
         </tr>
 
         <% for(BoardVO board: boardVOList){ %>
         <tr>
             <td> <%= board.getId() %> </td>
-            <td align ='left'><%= board.getTitle() %></td>
+            <td align ='left'><a href="GetBoard.do?id=<%=board.getId()%>"><%= board.getTitle() %></a></td>
+            <td><%= board.getUserName()%></td>
             <td><%= board.getCreatedDate()%></td>
         </tr>
         <%}%>

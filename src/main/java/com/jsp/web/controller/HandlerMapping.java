@@ -15,7 +15,7 @@ public class HandlerMapping {
         mappings.put("/loginUser.do", new LoginUserController());
         mappings.put("/loginUserView.do", new LoginUserViewController());
         mappings.put("/getBoardList.do", new GetBoardListController());
-//        mappings.put("/getBoard.do", new GetBoardController());
+        mappings.put("/getBoard.do", new GetBoardController());
 //        mappings.put("/insertBoardView.do", new InsertBoardViewController());
 //        mappings.put("/insertBoard.do", new InsertBoardController());
 //        mappings.put("/updateBoard.do", new UpdateBoardController());
