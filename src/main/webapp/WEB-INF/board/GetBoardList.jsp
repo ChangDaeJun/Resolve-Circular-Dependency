@@ -13,7 +13,7 @@
         <tr>
             <th bgcolor='orange' width='100'>번호</th>
             <th bgcolor='orange' width='200'>제목</th>
-            <th bgcolor='orange' width='200'>제목</th>
+            <th bgcolor='orange' width='200'>작성자</th>
             <th bgcolor='orange' width='150'>등록일</th>
         </tr>
 
