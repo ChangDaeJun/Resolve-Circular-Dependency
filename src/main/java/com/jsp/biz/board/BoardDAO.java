@@ -57,7 +57,7 @@ public class BoardDAO implements DomainDAO<BoardVO> {
                     BoardVO.setText(rs.getString("text"));
                     BoardVO.setRole(rs.getString("role"));
                     BoardVO.setViewCnt(rs.getLong("viewcnt"));
-                    BoardVO.setCreatedDate(rs.getDate("joindate"));
+                    BoardVO.setCreatedDate(rs.getDate("createddate"));
                     BoardVOList.add(BoardVO);
                 }
 
