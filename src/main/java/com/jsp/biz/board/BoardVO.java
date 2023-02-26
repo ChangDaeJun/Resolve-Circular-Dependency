@@ -9,6 +9,7 @@ import java.util.Date;
 public class BoardVO implements DomainVO {
     private Long id;
     private Long userId;
+    private String userName;
     private String title;
     private String text;
     private String role;
