@@ -23,7 +23,7 @@
     </table>
   </form>
   <br>
-  <a href="insertUser.jsp">회원 가입</a>
+  <a href="insertUserView.do">회원 가입</a>
   <hr>
 </center>
 

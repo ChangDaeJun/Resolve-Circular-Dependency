@@ -3,7 +3,6 @@ package com.jsp.web.controller.user;
 import com.jsp.biz.user.UserDAO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -15,7 +14,7 @@ public class LoginUserController implements Controller {
         String password = request.getParameter("password");
 
         UserVO userVO = new UserVO();
-        userVO.setEmail("email");
+        userVO.setEmail(email);
 
         UserDAO userDAO = new UserDAO();
         UserVO user = userDAO.findByEmail(userVO);
@@ -24,10 +23,9 @@ public class LoginUserController implements Controller {
 
         if(user != null && user.getPassword().equals(password)){
             session.setAttribute("user", user);
-            return "/getBoardList.do";
+            return "getBoardList.do";
         }else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("loginView.do");
-            return "/loginView.do";
+            return "loginUserView.do";
         }
     }
 }
