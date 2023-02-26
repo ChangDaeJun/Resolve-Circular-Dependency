@@ -3,6 +3,7 @@
 
 <%
   BoardVO board = (BoardVO) request.getAttribute("board");
+  UserVO userVO = (UserVO) request.getSession().getAttribute("user");
 %>
 
 <%@ include file="../layout/header.jsp" %>
@@ -40,9 +41,9 @@
     </table>
   </form>
   <hr>
-<%--  <% if(userVO.getRole().equals("ADMIN")) {%>
+<% if(userVO.getRole().equals("ADMIN")) {%>
   <a href='deleteBoard.do?id=<%=board.getId()%>'>글 삭제</a>
-  <% } %> --%>
+  <% } %>
 
 </center>
 
