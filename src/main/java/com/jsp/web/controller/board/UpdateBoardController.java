@@ -1,4 +1,4 @@
-package com.jsp.web.controller.user;
+package com.jsp.web.controller.board;
 
 import com.jsp.biz.board.BoardDAO;
 import com.jsp.biz.board.BoardVO;

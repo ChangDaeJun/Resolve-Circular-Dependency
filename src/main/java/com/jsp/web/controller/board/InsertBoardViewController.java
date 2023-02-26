@@ -1,4 +1,4 @@
-package com.jsp.web.controller.user;
+package com.jsp.web.controller.board;
 
 import com.jsp.web.controller.Controller;
 import jakarta.servlet.http.HttpServletRequest;

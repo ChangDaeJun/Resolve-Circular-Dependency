@@ -1,5 +1,6 @@
 package com.jsp.web.controller;
 
+import com.jsp.web.controller.board.*;
 import com.jsp.web.controller.user.*;
 
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public class HandlerMapping {
         mappings.put("/insertBoardView.do", new InsertBoardViewController());
         mappings.put("/insertBoard.do", new InsertBoardController());
         mappings.put("/updateBoard.do", new UpdateBoardController());
-//        mappings.put("/deleteBoard.do", new DeleteBoardController());
+        mappings.put("/deleteBoard.do", new DeleteBoardController());
 //        mappings.put("/logout.do", new LogoutController());
     }
 
