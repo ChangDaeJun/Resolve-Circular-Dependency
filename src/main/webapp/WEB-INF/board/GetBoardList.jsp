@@ -20,7 +20,7 @@
         <% for(BoardVO board: boardVOList){ %>
         <tr>
             <td> <%= board.getId() %> </td>
-            <td align ='left'><a href="GetBoard.do?id=<%=board.getId()%>"><%= board.getTitle() %></a></td>
+            <td align ='left'><a href="getBoard.do?id=<%=board.getId()%>"><%= board.getTitle() %></a></td>
             <td><%= board.getUserName()%></td>
             <td><%= board.getCreatedDate()%></td>
         </tr>
