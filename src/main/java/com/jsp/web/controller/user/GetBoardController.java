@@ -19,6 +19,12 @@ public class GetBoardController implements Controller {
         BoardDAO boardDAO = new BoardDAO();
         BoardVO board = boardDAO.findById(boardVO);
 
+        BoardVO updateViewCnt = new BoardVO();
+        updateViewCnt.setId(board.getId());
+        updateViewCnt.setViewCnt(board.getViewCnt());
+        BoardDAO boardDAO1 = new BoardDAO();
+        boardDAO1.increaseView(updateViewCnt);
+
         UserVO userVO = new UserVO();
         userVO.setId(board.getUserId());
 

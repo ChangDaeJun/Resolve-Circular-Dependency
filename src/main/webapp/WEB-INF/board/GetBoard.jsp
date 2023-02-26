@@ -9,7 +9,7 @@
 
 <center>
   <form action='updateBoard.do' method='post'>
-    <input name='seq' type='hidden' value="<%=board.getId()%>"/>
+    <input name='id' type='hidden' value="<%=board.getId()%>"/>
     <table border='1' cellpadding='0' cellspacing='0'>
       <tr>
         <td bgcolor='orange' width='70'>제목</td>
@@ -29,7 +29,7 @@
       </tr>
       <tr>
         <td bgcolor='orange' width='100'>조회수</td>
-        <td align='left'>0</td>
+        <td align='left'><%=board.getViewCnt()%></td>
       </tr>
 
       <tr>

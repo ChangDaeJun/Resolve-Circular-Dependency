@@ -24,7 +24,7 @@ public class BoardVO implements DomainVO {
 
     @Override
     public String[] getUpdateValue() {
-        String[] value = {this.title, this.text, ""+this.viewCnt, ""+this.id};
+        String[] value = {this.title, this.text, ""+this.id};
         return value;
     }
 
@@ -37,6 +37,11 @@ public class BoardVO implements DomainVO {
     @Override
     public String[] getFindByIdValue() {
         String[] value = {""+this.id};
+        return value;
+    }
+
+    public String[] getIncreaseViewValue(){
+        String[] value = {""+(1 + this.viewCnt), ""+this.id};
         return value;
     }
 }

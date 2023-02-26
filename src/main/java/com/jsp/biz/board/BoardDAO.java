@@ -12,7 +12,8 @@ import java.util.List;
 public class BoardDAO implements DomainDAO<BoardVO> {
     private static final String BOARD_LIST = "select * from boards";
     private static final String BOARD_INSERT = "insert into boards(userId, title, text, role, viewCnt) values(?, ?, ?, ?, ?)";
-    private static final String BOARD_UPDATE = "update boards set title = ?, text = ?, viewCnt = ? where id = ?";
+    private static final String BOARD_UPDATE = "update boards set title = ?, text = ? where id = ?";
+    private static final String BOARD_INCREASE_VIEW = "update boards set viewcnt = ? where id = ?";
     private static final String BOARD_DELETE = "delete boards where id = ?";
     private static final String BOARD_GET = "select * from boards where id = ?";
     @Override
@@ -31,6 +32,9 @@ public class BoardDAO implements DomainDAO<BoardVO> {
         DBController.update(BOARD_UPDATE, vo.getUpdateValue());
     }
 
+    public void increaseView(BoardVO vo){
+        DBController.update(BOARD_INCREASE_VIEW, vo.getIncreaseViewValue());
+    }
     @Override
     public void delete(BoardVO vo) {
         DBController.delete(BOARD_DELETE, vo.getDeleteValue());
