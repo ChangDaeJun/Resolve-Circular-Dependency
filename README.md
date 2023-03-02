@@ -9,7 +9,8 @@
 * 주요 기술 : Servlet, JSP, H2 Database, JDBC, gradle
 
 ### 프로젝트 구조
-<img width="791" alt="image" src="https://user-images.githubusercontent.com/97227920/221395529-7e20f580-b9bb-4891-8b97-0495b075f4e0.png">
+<img width="790" alt="image" src="https://user-images.githubusercontent.com/97227920/222411507-77723e9d-680d-42db-a07b-0039576a2173.png">
+
 
 * DispatcherServlet : 모든 요청을 받는 서블릿이다. 받은 요청을 HandlerMapping에서 찾아 실행한다.
 * HandlerMapping : DispatcherServlet으로부터 요청을 받아, 해당 요청을 처리할 수 있는 컨트롤러를 리턴한다.
