@@ -15,6 +15,8 @@ public class LikeDAO implements DomainDAO<LikeVO> {
     private static final String LIKE_UPDATE = "";
     private static final String LIKE_DELETE = "delete likes where id = ?";
     private static final String LIKE_GET = "select * from likes where id = ?";
+    private static final String LIKE_GET_USERID_AND_BOARDID = "select * from likes where userid = ? AND boardId = ?";
+
     @Override
     public List<LikeVO> getList() {
         List<LikeVO> likeVOList = (List<LikeVO>) DBController.select(LIKE_LIST, getAllExtractor());
@@ -40,6 +42,12 @@ public class LikeDAO implements DomainDAO<LikeVO> {
     public LikeVO findById(LikeVO vo) {
         List<LikeVO> list = (List<LikeVO>) DBController.select(LIKE_GET, getAllExtractor() ,vo.getFindByIdValue());
         return list.get(0);
+    }
+
+    public LikeVO findByUserIdAndBoardId(LikeVO vo) {
+        List<LikeVO> list = (List<LikeVO>) DBController.select(LIKE_GET_USERID_AND_BOARDID, getAllExtractor() ,vo.getFindByUserIdAndBoardIdValue());
+        if(list.size() == 0) return null;
+        else return list.get(0);
     }
 
     @Override

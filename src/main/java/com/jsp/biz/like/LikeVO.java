@@ -35,4 +35,9 @@ public class LikeVO implements DomainVO {
         String[] value = {""+this.id};
         return value;
     }
+
+    public String[] getFindByUserIdAndBoardIdValue(){
+        String[] value = {""+this.userId, ""+this.boardId};
+        return value;
+    }
 }

@@ -1,6 +1,8 @@
 package com.jsp.web.controller;
 
 import com.jsp.web.controller.board.*;
+import com.jsp.web.controller.like.MinusLikeController;
+import com.jsp.web.controller.like.PlusLikeController;
 import com.jsp.web.controller.user.*;
 
 import java.util.HashMap;
@@ -22,6 +24,8 @@ public class HandlerMapping {
         mappings.put("/updateBoard.do", new UpdateBoardController());
         mappings.put("/deleteBoard.do", new DeleteBoardController());
         mappings.put("/logout.do", new LogoutController());
+        mappings.put("/plusLike.do", new PlusLikeController());
+        mappings.put("/minusLike.do", new MinusLikeController());
     }
 
     public Controller getController(String path){

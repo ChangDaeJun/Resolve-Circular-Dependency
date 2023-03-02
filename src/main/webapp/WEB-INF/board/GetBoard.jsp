@@ -1,9 +1,11 @@
 <%@ page import="com.jsp.biz.board.BoardVO" %>
+<%@ page import="com.jsp.biz.like.LikeVO" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <%
   BoardVO board = (BoardVO) request.getAttribute("board");
   UserVO userVO = (UserVO) request.getSession().getAttribute("user");
+  LikeVO likeVO = (LikeVO) request.getAttribute("like");
 %>
 
 <%@ include file="../layout/header.jsp" %>
@@ -18,7 +20,7 @@
       </tr>
       <tr>
         <td bgcolor='orange'>작성자</td>
-        <td align='left'><%=board.getUserName()%>"</td>
+        <td align='left'><%=board.getUserName()%></td>
       </tr>
       <tr>
         <td bgcolor='orange'>내용</td>
@@ -36,11 +38,18 @@
       <tr>
         <td colspan='2' align='center'>
           <input type='submit' value='글 수정'>
+          <% if(likeVO == null) {%>
+          <button type="button" onClick="location.href='plusLike.do?id=<%=board.getId()%>'">좋아요</button>
+          <% } else {%>
+            <button type="button" onClick="location.href='minusLike.do?id=<%=board.getId()%>'">좋아요 취소</button>
+          <% }%>
         </td>
       </tr>
     </table>
   </form>
   <hr>
+
+
 <% if(userVO.getRole().equals("ADMIN")) {%>
   <a href='deleteBoard.do?id=<%=board.getId()%>'>글 삭제</a>
   <% } %>
