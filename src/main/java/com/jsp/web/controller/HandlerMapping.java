@@ -1,6 +1,7 @@
 package com.jsp.web.controller;
 
 import com.jsp.web.controller.board.*;
+import com.jsp.web.controller.comment.InsertCommentController;
 import com.jsp.web.controller.like.MinusLikeController;
 import com.jsp.web.controller.like.PlusLikeController;
 import com.jsp.web.controller.user.*;
@@ -26,6 +27,7 @@ public class HandlerMapping {
         mappings.put("/logout.do", new LogoutController());
         mappings.put("/plusLike.do", new PlusLikeController());
         mappings.put("/minusLike.do", new MinusLikeController());
+        mappings.put("/insertComment.do", new InsertCommentController());
     }
 
     public Controller getController(String path){

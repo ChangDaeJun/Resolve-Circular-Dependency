@@ -10,6 +10,7 @@ public class CommentVO implements DomainVO {
     private Long id;
     private Long boardId;
     private Long userId;
+    private String userName;
     private String text;
     private Date createdDate;
 
@@ -34,6 +35,11 @@ public class CommentVO implements DomainVO {
     @Override
     public String[] getFindByIdValue() {
         String[] value = {""+this.id};
+        return value;
+    }
+
+    public String[] getFindByBoardIdValue(){
+        String[] value = {""+this.boardId};
         return value;
     }
 }

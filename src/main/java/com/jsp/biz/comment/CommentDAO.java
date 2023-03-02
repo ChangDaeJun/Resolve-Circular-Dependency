@@ -15,6 +15,7 @@ public class CommentDAO implements DomainDAO<CommentVO> {
     private static final String COMMENT_UPDATE = "update comments set text = ? where id = ?";
     private static final String COMMENT_DELETE = "delete comments where id = ?";
     private static final String COMMENT_GET = "select * from comments where id = ?";
+    private static final String COMMENT_LIST_BOARDID = "select * from comments where boardid = ?";
 
     @Override
     public List<CommentVO> getList() {
@@ -43,6 +44,11 @@ public class CommentDAO implements DomainDAO<CommentVO> {
         return comments.get(0);
     }
 
+    public List<CommentVO> findByBoardId(CommentVO vo){
+        List<CommentVO> comments = DBController.select(COMMENT_LIST_BOARDID, getAllExtractor(), vo.getFindByBoardIdValue());
+        return comments;
+    }
+
     @Override
     public DBExtractor<CommentVO> getAllExtractor() {
         return new DBExtractor<CommentVO>() {
@@ -56,7 +62,7 @@ public class CommentDAO implements DomainDAO<CommentVO> {
                     CommentVO.setUserId(rs.getLong("userid"));
                     CommentVO.setBoardId(rs.getLong("boardid"));
                     CommentVO.setText(rs.getString("text"));
-                    CommentVO.setCreatedDate(rs.getDate("joindate"));
+                    CommentVO.setCreatedDate(rs.getDate("createddate"));
                     commentVOList.add(CommentVO);
                 }
 

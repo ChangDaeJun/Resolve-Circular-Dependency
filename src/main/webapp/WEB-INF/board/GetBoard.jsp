@@ -1,11 +1,14 @@
 <%@ page import="com.jsp.biz.board.BoardVO" %>
 <%@ page import="com.jsp.biz.like.LikeVO" %>
+<%@ page import="com.jsp.biz.comment.CommentVO" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
 <%
   BoardVO board = (BoardVO) request.getAttribute("board");
   UserVO userVO = (UserVO) request.getSession().getAttribute("user");
   LikeVO likeVO = (LikeVO) request.getAttribute("like");
+  List<CommentVO> comments = (List<CommentVO>) request.getAttribute("comments");
 %>
 
 <%@ include file="../layout/header.jsp" %>
@@ -49,10 +52,39 @@
   </form>
   <hr>
 
-
-<% if(userVO.getRole().equals("ADMIN")) {%>
+  <% if(userVO.getRole().equals("ADMIN")) {%>
   <a href='deleteBoard.do?id=<%=board.getId()%>'>글 삭제</a>
   <% } %>
+
+  <form action="insertComment.do?id=<%=board.getId()%>" method="post">
+    <table border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <td bgcolor="orange">댓글 내용</td>
+        <td align="left"><textarea name="text" clos ="200" rows="3"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="댓글등록"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <table border='1' cellpadding='0' cellspacing='0' width='700'>
+    <tr>
+      <th bgcolor='orange' width='60'>작성자</th>
+      <th bgcolor='orange' width='200'>내용</th>
+      <th bgcolor='orange' width='100'>등록일</th>
+    </tr>
+
+    <% for(CommentVO comment : comments){ %>
+    <tr>
+      <td> <%= comment.getUserName() %> </td>
+      <td><%= comment.getText()%></td>
+      <td><%= comment.getCreatedDate()%></td>
+    </tr>
+    <%}%>
+  </table>
 
 </center>
 

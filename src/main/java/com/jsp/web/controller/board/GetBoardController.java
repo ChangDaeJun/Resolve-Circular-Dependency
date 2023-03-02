@@ -2,6 +2,8 @@ package com.jsp.web.controller.board;
 
 import com.jsp.biz.board.BoardDAO;
 import com.jsp.biz.board.BoardVO;
+import com.jsp.biz.comment.CommentDAO;
+import com.jsp.biz.comment.CommentVO;
 import com.jsp.biz.like.LikeDAO;
 import com.jsp.biz.like.LikeVO;
 import com.jsp.biz.user.UserDAO;
@@ -10,6 +12,8 @@ import com.jsp.web.controller.Controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.h2.engine.User;
+
+import java.util.List;
 
 public class GetBoardController implements Controller {
     @Override
@@ -44,11 +48,28 @@ public class GetBoardController implements Controller {
         LikeDAO likeDAO = new LikeDAO();
         LikeVO like = likeDAO.findByUserIdAndBoardId(likeVO);
 
+        //해당 글의 댓글 찾기
+        CommentVO commentVO = new CommentVO();
+        commentVO.setBoardId(board.getId());
+        CommentDAO commentDAO = new CommentDAO();
+        List<CommentVO> comments = commentDAO.findByBoardId(commentVO);
+
+        for(CommentVO comment : comments){
+            UserVO userVO1 = new UserVO();
+            userVO1.setId(comment.getUserId());
+            UserDAO userDAO1 = new UserDAO();
+            UserVO createCommentUser = userDAO1.findById(userVO);
+            comment.setUserName(createCommentUser.getName());
+        }
+
         //글 넘기기
         request.setAttribute("board", board);
 
         //좋아요 여부 넘기기
         request.setAttribute("like", like);
+
+        //댓글 넘기기
+        request.setAttribute("comments", comments);
         return "GetBoard";
     }
 }
