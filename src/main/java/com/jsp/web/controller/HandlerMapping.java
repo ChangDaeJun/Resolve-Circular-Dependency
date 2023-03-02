@@ -4,6 +4,7 @@ import com.jsp.web.controller.board.*;
 import com.jsp.web.controller.comment.InsertCommentController;
 import com.jsp.web.controller.like.MinusLikeController;
 import com.jsp.web.controller.like.PlusLikeController;
+import com.jsp.web.controller.myPage.MyPageController;
 import com.jsp.web.controller.user.*;
 
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class HandlerMapping {
         mappings.put("/plusLike.do", new PlusLikeController());
         mappings.put("/minusLike.do", new MinusLikeController());
         mappings.put("/insertComment.do", new InsertCommentController());
+        mappings.put("/myPage.do", new MyPageController());
     }
 
     public Controller getController(String path){
