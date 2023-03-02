@@ -28,6 +28,6 @@ public class InsertBoardController implements Controller {
         BoardDAO boardDAO = new BoardDAO();
         boardDAO.insert(boardVO);
 
-        return "GetBoardList";
+        return "getBoardList.do";
     }
 }
