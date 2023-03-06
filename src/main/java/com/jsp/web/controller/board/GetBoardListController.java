@@ -5,19 +5,13 @@ import com.jsp.biz.board.BoardVO;
 import com.jsp.biz.user.UserDAO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.controller.ServiceController;
-import com.jsp.web.service.ServiceMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
 
-public class GetBoardListController  extends ServiceController {
-    public GetBoardListController(ServiceMapping serviceMapping) {
-        super(serviceMapping);
-    }
-
+public class GetBoardListController implements Controller {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
             BoardDAO boardDAO = new BoardDAO();
