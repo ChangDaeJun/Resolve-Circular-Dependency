@@ -4,6 +4,7 @@ import com.jsp.biz.user.UserDAO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
 
+import com.jsp.web.service.user.JoinService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

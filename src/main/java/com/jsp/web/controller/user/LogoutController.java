@@ -2,6 +2,7 @@ package com.jsp.web.controller.user;
 
 import com.jsp.web.controller.Controller;
 
+import com.jsp.web.service.user.LogoutService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
