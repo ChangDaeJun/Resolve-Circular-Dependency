@@ -42,9 +42,4 @@ public class CommentVO implements DomainVO {
         String[] value = {""+this.boardId};
         return value;
     }
-
-    public String[] getFindByUserIdValue(){
-        String[] value = {""+this.userId};
-        return value;
-    }
 }
