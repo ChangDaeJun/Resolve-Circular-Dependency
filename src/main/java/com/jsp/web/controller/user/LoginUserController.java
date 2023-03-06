@@ -1,34 +1,32 @@
 package com.jsp.web.controller.user;
 
+import com.jsp.biz.user.UserDAO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.service.ServiceMapping;
-import com.jsp.web.service.user.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class LoginUserController  implements Controller {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        UserVO vo = getLoginUserVO(request);
-        UserVO user = LoginService.getInstance().run(vo);
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
-        if(user != null){
-            request.getSession().setAttribute("user", user);
+        UserVO userVO = new UserVO();
+        userVO.setEmail(email);
+
+        UserDAO userDAO = new UserDAO();
+        UserVO user = userDAO.findByEmail(userVO);
+
+        HttpSession session = request.getSession();
+
+        if(user != null && user.getPassword().equals(password)){
+            session.setAttribute("user", user);
             return "getBoardList.do";
         }else {
             return "loginUserView.do";
         }
-    }
-
-    private UserVO getLoginUserVO(HttpServletRequest request){
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-        UserVO vo = new UserVO();
-        vo.setEmail(email);
-        vo.setPassword(password);
-        return vo;
     }
 }
