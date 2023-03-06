@@ -13,7 +13,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
 
-public class GetBoardListController implements Controller{
+public class GetBoardListController  extends ServiceController {
+    public GetBoardListController(ServiceMapping serviceMapping) {
+        super(serviceMapping);
+    }
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

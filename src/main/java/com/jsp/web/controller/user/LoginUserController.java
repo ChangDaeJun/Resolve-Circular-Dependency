@@ -2,12 +2,14 @@ package com.jsp.web.controller.user;
 
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.service.ServiceMapping;
 import com.jsp.web.service.user.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class LoginUserController  implements Controller {
+public class LoginUserController  extends ServiceController {
+    public LoginUserController(ServiceMapping serviceMapping) {
+        super(serviceMapping);
+    }
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

@@ -16,7 +16,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPageController implements Controller{
+public class MyPageController  extends ServiceController {
+    public MyPageController(ServiceMapping serviceMapping) {
+        super(serviceMapping);
+    }
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

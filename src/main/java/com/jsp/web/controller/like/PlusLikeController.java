@@ -9,8 +9,10 @@ import com.jsp.web.service.ServiceMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class PlusLikeController  implements Controller {
-
+public class PlusLikeController  extends ServiceController {
+    public PlusLikeController(ServiceMapping serviceMapping) {
+        super(serviceMapping);
+    }
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
