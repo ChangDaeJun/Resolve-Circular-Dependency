@@ -22,7 +22,7 @@ public class HandlerMapping {
         mappings.put("/getBoardList.do", new GetBoardListController());
         mappings.put("/getBoard.do", new GetBoardController());
         mappings.put("/insertBoardView.do", new InsertBoardViewController());
-        mappings.put("/insertBoard.do", new InsertBoardController());
+        mappings.put("/insertBoard.do", new WriteBoardController());
         mappings.put("/updateBoard.do", new UpdateBoardController());
         mappings.put("/deleteBoard.do", new DeleteBoardController());
         mappings.put("/logout.do", new LogoutController());

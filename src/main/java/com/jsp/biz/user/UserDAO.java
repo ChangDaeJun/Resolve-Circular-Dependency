@@ -41,6 +41,7 @@ public class UserDAO implements DomainDAO<UserVO> {
     @Override
     public UserVO findById(UserVO userVO){
         List<UserVO> users = (List<UserVO>) DBController.select(USER_GET_ID, getAllExtractor(), userVO.getFindByIdValue());
+        if(users.isEmpty()) return null;
         return users.get(0);
     }
 
