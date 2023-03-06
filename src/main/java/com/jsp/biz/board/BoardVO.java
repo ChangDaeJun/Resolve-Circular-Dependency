@@ -44,9 +44,4 @@ public class BoardVO implements DomainVO {
         String[] value = {""+(1 + this.viewCnt), ""+this.id};
         return value;
     }
-
-    public String[] getFindByUserIdValue(){
-        String[] value = {""+this.userId};
-        return value;
-    }
 }
