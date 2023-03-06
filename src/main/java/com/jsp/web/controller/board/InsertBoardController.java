@@ -4,8 +4,6 @@ import com.jsp.biz.board.BoardDAO;
 import com.jsp.biz.board.BoardVO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.controller.ServiceController;
-import com.jsp.web.service.ServiceMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;

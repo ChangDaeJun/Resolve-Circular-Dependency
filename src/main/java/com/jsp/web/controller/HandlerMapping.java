@@ -5,7 +5,6 @@ import com.jsp.web.controller.comment.InsertCommentController;
 import com.jsp.web.controller.like.MinusLikeController;
 import com.jsp.web.controller.like.PlusLikeController;
 import com.jsp.web.controller.user.*;
-import com.jsp.web.service.ServiceMapping;
 
 import java.util.HashMap;
 import java.util.Map;
