@@ -1,3 +1,5 @@
+
+
 package com.jsp.biz.board;
 
 import com.jsp.biz.DomainDAO;
@@ -16,6 +18,8 @@ public class BoardDAO implements DomainDAO<BoardVO> {
     private static final String BOARD_INCREASE_VIEW = "update boards set viewcnt = ? where id = ?";
     private static final String BOARD_DELETE = "delete boards where id = ?";
     private static final String BOARD_GET = "select * from boards where id = ?";
+    private static final String BOARD_LIST_USERID = "select * from boards where userid = ? ";
+
     @Override
     public List<BoardVO> getList() {
         List<BoardVO> boards = DBController.select(BOARD_LIST, getAllExtractor());
@@ -44,6 +48,11 @@ public class BoardDAO implements DomainDAO<BoardVO> {
     public BoardVO findById(BoardVO vo) {
         List<BoardVO> boards = DBController.select(BOARD_GET, getAllExtractor(), vo.getFindByIdValue());
         return boards.get(0);
+    }
+
+    public List<BoardVO> findByUserId(BoardVO vo) {
+        List<BoardVO> boards = DBController.select(BOARD_LIST_USERID, getAllExtractor(), vo.getFindByUserIdValue());
+        return boards;
     }
 
     @Override
