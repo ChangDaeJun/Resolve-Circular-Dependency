@@ -8,10 +8,7 @@ import com.jsp.web.service.ServiceMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class DeleteBoardController  extends ServiceController {
-    public DeleteBoardController(ServiceMapping serviceMapping) {
-        super(serviceMapping);
-    }
+public class DeleteBoardController  implements Controller {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

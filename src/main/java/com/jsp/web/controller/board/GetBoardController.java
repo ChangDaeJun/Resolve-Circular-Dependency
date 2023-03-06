@@ -17,10 +17,7 @@ import org.h2.engine.User;
 
 import java.util.List;
 
-public class GetBoardController  extends ServiceController {
-    public GetBoardController(ServiceMapping serviceMapping) {
-        super(serviceMapping);
-    }
+public class GetBoardController implements Controller {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

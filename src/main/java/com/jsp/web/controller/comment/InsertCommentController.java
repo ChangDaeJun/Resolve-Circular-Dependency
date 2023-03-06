@@ -10,11 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.h2.engine.User;
 
-public class InsertCommentController  extends ServiceController {
-    public InsertCommentController(ServiceMapping serviceMapping) {
-        super(serviceMapping);
-    }
-
+public class InsertCommentController implements Controller {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         UserVO createUSer = (UserVO) request.getSession().getAttribute("user");

@@ -10,10 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class InsertBoardController  extends ServiceController {
-    public InsertBoardController(ServiceMapping serviceMapping) {
-        super(serviceMapping);
-    }
+public class InsertBoardController implements Controller {
 
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
