@@ -1,6 +1,5 @@
 package com.jsp.web.service.board;
 
-import com.jsp.biz.board.BoardDAO;
 import com.jsp.biz.board.BoardVO;
 import com.jsp.biz.comment.CommentDAO;
 import com.jsp.biz.comment.CommentVO;
@@ -8,19 +7,24 @@ import com.jsp.biz.like.LikeDAO;
 import com.jsp.biz.like.LikeVO;
 import com.jsp.biz.user.UserDAO;
 import com.jsp.biz.user.UserVO;
-import com.jsp.web.controller.Controller;
 import com.jsp.web.service.user.FindUserByIdService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class GetBoardController implements Controller {
-    @Override
-    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        Long boardId = Long.parseLong(request.getParameter("id"));
-        UserVO viewUser = (UserVO) request.getSession().getAttribute("user");
+public class GetBoardService{
+    private GetBoardService(){}
+    private static class GetBoardServiceHelper{
+        private static final GetBoardService INSTANCE = new GetBoardService();
+    }
+    public static GetBoardService getInstance(){
+        return GetBoardService.GetBoardServiceHelper.INSTANCE;
+    }
 
+    public Map<String, Object> run(Long boardId, UserVO viewUser) {
         //글 찾기
         BoardVO board = FindBoardByIdService.getInstance().run(boardId);
 
@@ -53,11 +57,15 @@ public class GetBoardController implements Controller {
             comment.setUserName(createCommentUser.getName());
         }
 
-        request.setAttribute("board", board);
-        request.setAttribute("like", like);
-        request.setAttribute("comments", comments);
+        return getMap(board, like, comments);
+    }
 
-        return "GetBoard";
+    private static Map<String, Object> getMap(BoardVO board, LikeVO like, List<CommentVO> comments) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("board", board);
+        map.put("like", like);
+        map.put("comments", comments);
+        return map;
     }
 
     private static BoardVO getIncreaseViewBoardVO(BoardVO board) {
