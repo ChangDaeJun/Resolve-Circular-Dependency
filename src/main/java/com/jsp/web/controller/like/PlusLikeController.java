@@ -4,10 +4,16 @@ import com.jsp.biz.like.LikeDAO;
 import com.jsp.biz.like.LikeVO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
+import com.jsp.web.controller.ServiceController;
+import com.jsp.web.service.ServiceMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class PlusLikeController implements Controller {
+public class PlusLikeController  extends ServiceController {
+    public PlusLikeController(ServiceMapping serviceMapping) {
+        super(serviceMapping);
+    }
+
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         String boardId = request.getParameter("id");

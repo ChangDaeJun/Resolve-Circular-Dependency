@@ -8,13 +8,19 @@ import com.jsp.biz.like.LikeDAO;
 import com.jsp.biz.like.LikeVO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
+import com.jsp.web.controller.ServiceController;
+import com.jsp.web.service.ServiceMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPageController implements Controller {
+public class MyPageController  extends ServiceController {
+    public MyPageController(ServiceMapping serviceMapping) {
+        super(serviceMapping);
+    }
+
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         UserVO user = (UserVO) request.getSession().getAttribute("user");

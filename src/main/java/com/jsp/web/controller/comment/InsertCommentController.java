@@ -4,11 +4,17 @@ import com.jsp.biz.comment.CommentDAO;
 import com.jsp.biz.comment.CommentVO;
 import com.jsp.biz.user.UserVO;
 import com.jsp.web.controller.Controller;
+import com.jsp.web.controller.ServiceController;
+import com.jsp.web.service.ServiceMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.h2.engine.User;
 
-public class InsertCommentController implements Controller {
+public class InsertCommentController  extends ServiceController {
+    public InsertCommentController(ServiceMapping serviceMapping) {
+        super(serviceMapping);
+    }
+
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         UserVO createUSer = (UserVO) request.getSession().getAttribute("user");
