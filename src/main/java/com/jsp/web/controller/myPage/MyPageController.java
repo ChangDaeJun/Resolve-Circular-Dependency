@@ -1,12 +1,12 @@
 package com.jsp.web.controller.myPage;
 
-import com.jsp.biz.board.BoardDAO;
-import com.jsp.biz.board.BoardVO;
-import com.jsp.biz.comment.CommentDAO;
-import com.jsp.biz.comment.CommentVO;
-import com.jsp.biz.like.LikeDAO;
-import com.jsp.biz.like.LikeVO;
-import com.jsp.biz.user.UserVO;
+import com.jsp.domain.board.BoardDAO;
+import com.jsp.domain.board.BoardVO;
+import com.jsp.domain.comment.CommentDAO;
+import com.jsp.domain.comment.CommentVO;
+import com.jsp.domain.like.LikeDAO;
+import com.jsp.domain.like.LikeVO;
+import com.jsp.domain.user.UserVO;
 import com.jsp.web.controller.Controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

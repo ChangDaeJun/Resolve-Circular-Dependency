@@ -1,8 +1,8 @@
 package com.jsp.web.controller.board;
 
-import com.jsp.biz.board.BoardVO;
+import com.jsp.domain.board.BoardVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.service.board.DeleteBoardService;
+import com.jsp.service.board.DeleteBoardService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

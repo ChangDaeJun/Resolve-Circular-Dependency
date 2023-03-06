@@ -1,4 +1,4 @@
-<%@ page import="com.jsp.biz.user.UserVO" %>
+<%@ page import="com.jsp.domain.user.UserVO" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <html>
 <head>

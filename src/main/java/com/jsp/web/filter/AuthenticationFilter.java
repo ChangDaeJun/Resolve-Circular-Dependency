@@ -1,6 +1,6 @@
 package com.jsp.web.filter;
 
-import com.jsp.biz.user.UserVO;
+import com.jsp.domain.user.UserVO;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;

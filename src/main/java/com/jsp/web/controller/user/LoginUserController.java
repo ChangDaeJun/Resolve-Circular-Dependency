@@ -1,9 +1,9 @@
 package com.jsp.web.controller.user;
 
-import com.jsp.biz.user.UserVO;
+import com.jsp.domain.user.UserVO;
 import com.jsp.web.controller.Controller;
 
-import com.jsp.web.service.user.LoginService;
+import com.jsp.service.user.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

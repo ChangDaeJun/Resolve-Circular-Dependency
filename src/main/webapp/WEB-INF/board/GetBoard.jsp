@@ -1,6 +1,6 @@
-<%@ page import="com.jsp.biz.board.BoardVO" %>
-<%@ page import="com.jsp.biz.like.LikeVO" %>
-<%@ page import="com.jsp.biz.comment.CommentVO" %>
+<%@ page import="com.jsp.domain.board.BoardVO" %>
+<%@ page import="com.jsp.domain.like.LikeVO" %>
+<%@ page import="com.jsp.domain.comment.CommentVO" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 

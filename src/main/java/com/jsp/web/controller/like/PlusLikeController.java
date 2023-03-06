@@ -1,11 +1,9 @@
 package com.jsp.web.controller.like;
 
-import com.jsp.biz.like.LikeDAO;
-import com.jsp.biz.like.LikeVO;
-import com.jsp.biz.user.UserVO;
+import com.jsp.domain.like.LikeVO;
+import com.jsp.domain.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.service.like.DecreaseLikeService;
-import com.jsp.web.service.like.IncreaseLikeService;
+import com.jsp.service.like.IncreaseLikeService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

@@ -1,10 +1,9 @@
 package com.jsp.web.controller.board;
 
-import com.jsp.biz.board.BoardDAO;
-import com.jsp.biz.board.BoardVO;
-import com.jsp.biz.user.UserVO;
+import com.jsp.domain.board.BoardVO;
+import com.jsp.domain.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.service.board.WriteBoardService;
+import com.jsp.service.board.WriteBoardService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;

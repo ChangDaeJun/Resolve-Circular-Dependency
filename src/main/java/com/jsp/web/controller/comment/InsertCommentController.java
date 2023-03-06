@@ -1,13 +1,11 @@
 package com.jsp.web.controller.comment;
 
-import com.jsp.biz.comment.CommentDAO;
-import com.jsp.biz.comment.CommentVO;
-import com.jsp.biz.user.UserVO;
+import com.jsp.domain.comment.CommentVO;
+import com.jsp.domain.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.service.comment.InsertCommentService;
+import com.jsp.service.comment.InsertCommentService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.h2.engine.User;
 
 public class InsertCommentController implements Controller {
     @Override

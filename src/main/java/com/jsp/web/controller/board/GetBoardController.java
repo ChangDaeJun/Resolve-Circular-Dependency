@@ -1,8 +1,8 @@
 package com.jsp.web.controller.board;
 
-import com.jsp.biz.user.UserVO;
+import com.jsp.domain.user.UserVO;
 import com.jsp.web.controller.Controller;
-import com.jsp.web.service.board.GetBoardService;
+import com.jsp.service.board.GetBoardService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
