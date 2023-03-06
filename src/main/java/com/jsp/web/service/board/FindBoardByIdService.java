@@ -3,6 +3,8 @@ package com.jsp.web.service.board;
 
 import com.jsp.biz.board.BoardDAO;
 import com.jsp.biz.board.BoardVO;
+import com.jsp.biz.user.UserVO;
+import com.jsp.web.service.user.FindUserByIdService;
 
 public class FindBoardByIdService {
     private FindBoardByIdService(){}
@@ -17,6 +19,11 @@ public class FindBoardByIdService {
         BoardVO boardVO = new BoardVO();
         boardVO.setId(id);
         BoardDAO boardDAO = new BoardDAO();
-        return boardDAO.findById(boardVO);
+        BoardVO board = boardDAO.findById(boardVO);
+
+        //글 작성자 조회
+        UserVO createUser = FindUserByIdService.getInstance().run(board.getUserId());
+        board.setUserName(createUser.getName());
+        return board;
     }
 }

@@ -2,7 +2,6 @@ package com.jsp.web.service.board;
 
 import com.jsp.biz.board.BoardDAO;
 import com.jsp.biz.board.BoardVO;
-import com.jsp.web.service.user.IncreaseBoardViewService;
 
 public class IncreaseBoardViewService {
     private IncreaseBoardViewService(){}
