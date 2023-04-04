@@ -1,4 +1,4 @@
-# Resolve Circular References
+# Resolve Circular Dependency
 * This web site created based on Servlet & JSP.
 </br>
 
@@ -15,39 +15,45 @@
 ### project goals
 * used MVC pattern
 * reduce code duplication in database
-* resolve circular references
+* resolve circular dependency
 </br>
 
-## MVC 패턴의 적용
+## used MVC pattern
 
-### 목표
-* MVC 패턴을 통해 서버의 뷰와 비즈니스 로직을 분리하여 관심사를 분리한다.
+### goal
+* implement and adapt MVC pattern
+
 </br>
 
-### 구현
-1. DispatcherServlet, HandlerMapping, viewResolver, Controller, Service 객체를 만들었습니다.
-2. DispatcherServlet은 요청을 받아 HandlerMapping에게 적절한 Controller를 획득합니다.
-3. Controller는 요청에 맞춰 Service 로직을 실행하게 됩니다.
-4. Service는 싱글톤이며, 적절한 비즈니스 로직을 담당하게 됩니다.
+### implement
+1. Created DispatcherServlet, HandlerMapping, viewResolver, Controller, Service object.
+2. DispatcherServlet accepts all requests.
+3. Handler Mapping provides the appropriate controller at the request of the Dispatcher Servlet.
+4. Controller will run Service logic.
+5. service created in single tone and it is responsible for business logic.
+
 </br>
 
-### 프로젝트 구조
+### adapt
 ![image](https://user-images.githubusercontent.com/97227920/223716532-6f8118a2-391b-40f1-bcdf-f58c9ef9ec50.png)
 </br>
 
-## 데이터베이스 코드 중복 감소
-### 목표
-* JDBC로 데이터베이스를 연결할 때 코드 중복을 최소화한다.
+## reduce code duplication in database
+
+
+### goal
+* reduce code duplication in database at JDBC.
 </br>
 
-### 구현
-1. DBUtil, DBController, DBExtractor를 만들어 쿼리문과 변수만으로 DB 조작이 가능하도록 구성하였습니다.
-2. DBUtil은 JDBC 연결과 연결 close()에 대한 static 메서드가 있는 클래스입니다.
-3. DBController는 DBUtil을 사용하여, select, update, delete, insert 메서드를 구현하였습니다.
-4. 가장 큰 고민은 select의 결과값이 쿼리마다 다르다는 점이었습니다. 저는 자바의 비교자 Comparator 인터페이스와 유사하게, DBExtractor라는 추출자 인터페이스를 만들고, 이에 대한 구현을 DAO가 하도록 설계했습니다.
+### implement
+1. Create DBUtil, DBController, DBExtractor objects that manipulate databases with query and variables.
+2. DBUti has implemented a static method for JDBC connections and termination of connections.
+3. DBC controller implemented the select, update, delete, insert methods using DBUtil.
+4. The DBExtractor is an interface. Specifies the type that the DBCcontroller's select method returns. DAO implements DBExtractor.(This is similar to Java's Comparator interface.)
+
 </br>
 
-### 코드
+### Codes
 ```
 public static List select(String query, DBExtractor function , String... args){
         Connection conn = null;
@@ -75,7 +81,7 @@ public static List select(String query, DBExtractor function , String... args){
         return list;
     }
 ```
-<코드 1 : DBController의 select 메서드>
+<코드 1 : DBController - select method>
 </br>
 
 ```
@@ -102,16 +108,17 @@ public static List select(String query, DBExtractor function , String... args){
         };
     }
 ```
-<코드2 : UserDAO에서 DBExtractor 구현체를 리턴하는 getAllExtractor 메서드>
+<코드2 : UserDAO - getAllExtractor method implement DBExtrator>
 </br>
 
-## 확장하기 쉬운 서비스 객체
+## resolve circular dependency
 
-### 목표
-* 상호 의존 가능성은 낮추고, 동시에 서비스 객체의 코드 재사용성을 높혀 기능의 확장이 쉽도록 한다.
+### goal
+* resolve circular dependency between services
+
 </br>
 
-### 서비스 간 상호 의존 발생의 원인
+### causes of circular dependency
 * 서로 다른 서비스 A, B가 상호 의존한다는 의미는 A가 B의 서비스를 필요하고, B도 A의 서비스가 필요하다는 것이다. 이는 다음과 같은 경우가 존재한다.
 ```
 1. A의  메서드a와 B의 메서드b가 서로 의존하는 경우
