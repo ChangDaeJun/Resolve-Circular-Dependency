@@ -1,4 +1,4 @@
-# Board-Project
+# Resolve Circular Referecnes
 * Servlet & JSP을 기반으로 만든 게시판 웹 사이트입니다.
 </br>
 
