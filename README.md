@@ -1,19 +1,21 @@
-# Resolve Circular Referecnes
-* Servlet & JSP을 기반으로 만든 게시판 웹 사이트입니다.
+# Resolve Circular References
+* This web site created based on Servlet & JSP.
 </br>
 
-## 프로젝트 소개
+## Intro.
 
-### 사용 툴 & 기술
-* IDE : IntelliJ ultimate
-* server : tomcat 내장 서버
-* 주요 기술 : Servlet, JSP, H2 Database, JDBC, gradle
+### used tech and tool
+* server : tomcat 10
+* language : Java
+* database : H2 database
+* etc : Servlet, JSP, JDBC, gradle
+
 </br>
 
-### 핵심 과제
-* MVC 패턴의 적용
-* 데이터베이스 코드 중복 감소
-* 확장하기 쉬운 서비스 객체
+### project goals
+* used MVC pattern
+* reduce code duplication in database
+* resolve circular references
 </br>
 
 ## MVC 패턴의 적용
