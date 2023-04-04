@@ -53,6 +53,11 @@
 
 </br>
 
+### adapt
+<img width="734" alt="image" src="https://user-images.githubusercontent.com/97227920/229778778-e5c622e8-9dd1-4eed-9d93-c046309d6dc3.png">
+
+</br>
+
 ### Codes
 ```
 public static List select(String query, DBExtractor function , String... args){
@@ -119,60 +124,48 @@ public static List select(String query, DBExtractor function , String... args){
 </br>
 
 ### causes of circular dependency
-* 서로 다른 서비스 A, B가 상호 의존한다는 의미는 A가 B의 서비스를 필요하고, B도 A의 서비스가 필요하다는 것이다. 이는 다음과 같은 경우가 존재한다.
-```
-1. A의  메서드a와 B의 메서드b가 서로 의존하는 경우
-2. A의 메서드a1이 B의  메서드b1을 의존하고, B의 메서드 b2가 A의 메서드 b2를 의존하는 경우
-```
-* 1번의 경우는 정상적인 비즈니스 로직 상황에서 발생할 수 없다. 닭이 먼저인지 계란이 먼저인지와 같은 상황으로 기획에서 발생한 오류로 본다.
-* 2번의 경우는 메서드 a1과 a2, b1과b2가 의존성 수준이 다르기 때문이다. 간단한 게시판 프로젝트의 UserService와 BoardService을 예로 들 수 있다.
+* Different services A and B are cyclically dependent, meaning that A needs B's service, and B also needs A's service.
+<img width="591" alt="image" src="https://user-images.githubusercontent.com/97227920/229782819-17a397e6-9345-4119-8c1d-39e380b36b60.png">
 
-```
-a1, a2 : UserService에 속한 메서드 / b1, b2 : BoardService에 속한 메서드
+* Case 1 cannot occur in normal business logic situations. It is the same situation as whether the chicken comes first or the egg comes first.
+* Case 2, method 1 and method 2 of service A have different dependence levels.
+* If you consider the case where multiple service-dependent chains are circular dependency, check the following figure. It is entirely consistent with the above case.
+<img width="590" alt="image" src="https://user-images.githubusercontent.com/97227920/229787848-c0ab46cb-6860-420c-9655-fbeb23e4aed5.png">
+<img width="590" alt="image" src="https://user-images.githubusercontent.com/97227920/229787875-7da91b74-f016-460a-a03c-82f692216f2a.png">
 
-a1 : UserService의 delete(Long id) 메서드는 유저를 삭제하는 기능을 담당하는데, 유저를 삭제하기 위해서는 유저가 작성한 글을 우선 삭제해야 한다.
-a2 : UserService의 get(Long id) 메서드는 유저를 조회하는 기능을 담당한다.
-b1 : BoardService의 delete(Long id, User user) 메서드는 글을 삭제하는 기능을 담당하는데, 글을 삭제하기 위해서는 글 작성자가 메서드 요청자가 맞는지 확인해야 한다.
-b2 : BoardService의 write(Long id) 메서드는 글을 작성하는 기능을 담당하는데, 글을 작성하기 전에 유저를 검증해야 한다.
 
-a1은 b1을 의존해야 하는 상황이며, b1은 a2를 의존해야 하며, b2는 a2를 의존해야 하는 상황이다. a1을 의존하는 메서드는 없는 반면, a2를 의존하는 메서드는 2개인 상황이다. 
-문제는 의존성 수준이 다른 a1, a2가 같은 서비스 객체 안에 존재한다는 점이다.
-```
 </br>
 
-### 해결 방안
-* 의존 수준이 다른 메서드를 서로 다른 서비스로 분리할 수 있다. 다만, 의존 수준은 서비스가 늘어남에 따라 달라질 수 있다.
-* 이러한 단점을 해결하고자 수학의 증명 과정을 적용했다.
-* 이를 위해 모든 서비스는 하나의 가장 작은 기능을 구현한 메서드만을 갖게 된다.
-* 모든 서비스는 가장 기본적인 서비스를 기반으로 만들어 진다.
-* 가장 기본적인 서비스란 다른 서비스를 의존하지 않는 서비스를 의미한다.
+### solutaion
+* Methods with different levels of dependence must be separated into different services. But, It is difficult becuase the level of dependence is expected to change as the service expands.
+* To solve this problem, All service had only one method with minimal functionality.
+
 </br>
 
-### 서비스 구조
-![image](https://user-images.githubusercontent.com/97227920/223718753-e4c62b66-e411-4f0a-9181-6ab44d09ee75.png)
-<GetBoardService을 중심으로 나타낸 서비스 의존성>
+### service Example structure
+<img width="824" alt="image" src="https://user-images.githubusercontent.com/97227920/229797347-7efee40e-f880-4e9d-be8e-2cb7ecfec694.png">
+
+</br>
+<img width="830" alt="image" src="https://user-images.githubusercontent.com/97227920/229797410-2f369ccc-e34f-4a39-bdb0-d5926fbe62e5.png">
+
 </br>
 
-![image](https://user-images.githubusercontent.com/97227920/223718858-c5c6d67e-4efa-4502-9cc7-24ab0b0dc5fe.png)
-<DeleteUserService을 중심으로 나타낸 서비스 의존성>
-</br>
-
-## 뷰 페이지 소개
+## web page views
 
 ![스크린샷 2023-03-02 오후 10 23 49](https://user-images.githubusercontent.com/97227920/222440755-e0d01536-5a2a-4a0e-8e17-157e3ccbc7a3.png)
-<이미지 4 : 홈페이지>
+* image : home page
 
 ![스크린샷 2023-03-02 오후 10 25 27](https://user-images.githubusercontent.com/97227920/222441116-2138b371-81f1-42ac-9d07-69da6e1abaa3.png)
-<이미지 5 : 홈페이지>
+* image : login page
 
 ![스크린샷 2023-03-02 오후 10 26 11](https://user-images.githubusercontent.com/97227920/222441314-2913c97c-2c67-41ee-b814-562a4aef5319.png)
-<이미지 6 : 글 목록>
+* image : board List
 
 ![스크린샷 2023-03-02 오후 10 26 47](https://user-images.githubusercontent.com/97227920/222441429-44839955-ee5c-4139-82b2-4c3c6753eee4.png)
-<이미지 7 : 글 상세 페이지>
+* image : baord detail page
 
 ![스크린샷 2023-03-02 오후 10 27 14](https://user-images.githubusercontent.com/97227920/222441537-1fffdb08-a51f-4b4d-8028-1e1c41e411ad.png)
-<이미지 8 : 마이 페이지>
+* image : my page
 
 ![스크린샷 2023-03-02 오후 10 27 35](https://user-images.githubusercontent.com/97227920/222441649-043bd9e2-c1b6-4cb8-82a2-ec233fa199d4.png)
-<이미지 9 : 글 작성 페이지>
+* image : board write page
